@@ -1,0 +1,2 @@
+"Machine Learning with Pytorch nd Scikit-Learn" - Sebastian Raschka, Yuxi Liu, Vahid Mirjalili, Dmytro Dzhulgakov.
+"Evaluation of Classification Algorithms in Breast-Cancer Severity Diagnosis" - Doriela Grabocka.
