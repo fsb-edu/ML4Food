@@ -1,2 +1,5 @@
 "Machine Learning with Pytorch nd Scikit-Learn" - Sebastian Raschka, Yuxi Liu, Vahid Mirjalili, Dmytro Dzhulgakov.
 "Evaluation of Classification Algorithms in Breast-Cancer Severity Diagnosis" - Doriela Grabocka.
+Data from UCI machine learning repository: wine-quality-red-white from Portugal
+Data from Machine Learning A-Z course from Udemy Wine.csv (with a customer segment added in the end)
+wine-simple-italy - wine data from Italy again from 
