@@ -3,3 +3,4 @@
 Data from UCI machine learning repository: wine-quality-red-white from Portugal
 Data from Machine Learning A-Z course from Udemy Wine.csv (with a customer segment added in the end)
 wine-simple-italy - wine data from Italy again from 
+swiss_food_composition_database -> assembled from https://naehrwertdaten.ch/en/downloads/
