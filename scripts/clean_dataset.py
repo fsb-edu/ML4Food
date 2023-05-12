@@ -3,24 +3,7 @@ import numpy as np
 
 PATH_TO_DATASET = '../data/Swiss_food_composition_database.xlsx'
 
-def process_dataset()->pd.DataFrame:
-    """This is the driver method that will starts the processing process. It will
-    return the clean and ready to use dataset.
-    Args:
-        None
-    Returns:
-        pd.Dataframe - the clean dataframe
-    """
-    clean_dataset = read_dataset_in_dataframe()
-    drop_unnecessary_cols(clean_dataset)
-    rename_columns(clean_dataset)
-    replace_non_numerical_values(clean_dataset)
-    replace_traces(clean_dataset)
-    print('Done. Clean dataset ready.')
-    return clean_dataset
-
-
-def read_dataset_in_dataframe():
+def read_dataset_in_dataframe()->pd.DataFrame:
     """Reading the dataset into a pandas dataframe.
     
         Args:
@@ -33,7 +16,7 @@ def read_dataset_in_dataframe():
     return dataset
 
 
-def drop_unnecessary_cols(dataset:pd.DataFrame)-> None:
+def drop_unnecessary_cols(dataset:pd.DataFrame)-> pd.DataFrame:
     """The first step is to select only the columns that we want to keep. We need to remove all Source and
     Derivation of Value columns, Synonyms, ID V 4.0 from the columns. The change happens in place, so the method does not
     return anything.
@@ -42,8 +25,9 @@ def drop_unnecessary_cols(dataset:pd.DataFrame)-> None:
         dataset: is the dataset whose columns will be modified.
     
     Returns:
-        None
+        the dataframe after the columns are dropped.
     """
+    df = dataset.copy(deep=True)
     sources_to_drop = ['Source.'+str(i) for i in range(1,40)]
     derivations_to_drop = ['Derivation of value.' + str(i) for i in range(1,40)]
     # additional columns to drop
@@ -51,10 +35,11 @@ def drop_unnecessary_cols(dataset:pd.DataFrame)-> None:
                     'Matrix unit', 'ID SwissFIR','Energy, kilojoules (kJ)', 'Record has changed']
     cols_to_drop.extend(sources_to_drop)
     cols_to_drop.extend(derivations_to_drop)
-    dataset = dataset.drop(columns=cols_to_drop, axis=1, inplace=True)
+    df = dataset.drop(columns=cols_to_drop, axis=1)
+    return df
 
 
-def rename_columns (dataset:pd.DataFrame) -> None:
+def rename_columns (dataset:pd.DataFrame) -> pd.DataFrame:
     """The second step is to rename the columns. We will use this procedure: take the first word and the unit of measure 
     and concatenate them with a prefix of f_, where f will stand for feature. 
     E.g: "Energy, kilocalories (kcal)" -> "f_energy_kcal". The changes will happen in place so the method will not 
@@ -64,8 +49,9 @@ def rename_columns (dataset:pd.DataFrame) -> None:
         dataset: is the dataset we are modifying
 
     Returns:
-        None since the change happens in place.
+        the modified dataframe after renaming the columns.
     """
+    df = dataset.copy(deep=True)
     prefix = 'f_'
     new_cols_mapping = {'ID':'ID', 
                     'Name':'name', 
@@ -110,10 +96,11 @@ def rename_columns (dataset:pd.DataFrame) -> None:
                     'Iodide (I) (µg)':'iodide_µg',
                     'Zinc (Zn) (mg)':'zinc_mg', 
                     'Selenium (Se) (µg)':'selenium_µg'}
-    dataset.columns = [prefix + value for value in new_cols_mapping.values()]
+    df.columns = [prefix + value for value in new_cols_mapping.values()]
+    return df
 
 
-def replace_non_numerical_values(dataset:pd.DataFrame)->None:
+def replace_non_numerical_values(dataset:pd.DataFrame)->pd.DataFrame:
     """
     This method is used to clear values of the form '<0.4' from the dataset. In this case we subsitute them 
     with the numerical value. E.g: '<0.4' becomes '0.4'.
@@ -122,9 +109,10 @@ def replace_non_numerical_values(dataset:pd.DataFrame)->None:
         dataset: is the dataset we are modifying
 
     Returns:
-        None since the change happens in place.    
+        the dataframe without the non-numerical values    
     """
-    count = dataset.astype(str).applymap(lambda x: x.count('<')).sum().sum()
+    df = dataset.copy(deep=True)
+    count = df.astype(str).applymap(lambda x: x.count('<')).sum().sum()
     print("There are " + str(count) + " cells containing non-numerical values. Stripping '<'.")
     print("Done.")
     def extract_value(value):
@@ -133,10 +121,11 @@ def replace_non_numerical_values(dataset:pd.DataFrame)->None:
         else:
             return value
     # remove < only from numerical columns, starting from index 3
-    dataset.iloc[:, 3:] = dataset.iloc[:, 3:].applymap(extract_value)
+    df.iloc[:, 3:] = df.iloc[:, 3:].applymap(extract_value)
+    return df
 
 
-def replace_traces(dataset:pd.DataFrame)->None:
+def replace_traces(dataset:pd.DataFrame)->pd.DataFrame:
     """
     This method is used to remove all 'tr.' values, that stand for traces from the datase. We substitute them 
     with a small value defined in the value variable.
@@ -145,9 +134,47 @@ def replace_traces(dataset:pd.DataFrame)->None:
         dataset: is the dataset we are modifying
 
     Returns:
-        None since the change happens in place.    
+        the dataframe without the 't.r.' values    
     """
-    tr_count = dataset.apply(lambda x: x.value_counts().get('tr.', 0))
+    df = dataset.copy(deep=True)
+    tr_count = df.apply(lambda x: x.value_counts().get('tr.', 0))
     value = 0.0001
     print("In total found " + str(sum(tr_count))+ " traces. Replacing them with 0.0001")
-    dataset = dataset.replace('tr.', value, inplace=True)
+    df = df.replace('tr.', value)
+    return df
+
+def replace_nd_values(dataset:pd.DataFrame)->pd.DataFrame:
+    """
+    This method is used to remove all 'n.d.' values, that stand for missing values from the dataset. We substitute them 
+    np.nan.
+
+    Args:
+        dataset: is the dataset we are modifying
+
+    Returns:
+        the dataframe without the 'n.d.' values    
+    """
+    
+    df = dataset.copy(deep=True)
+    df = df.replace('n.d.', np.nan)
+    return df
+
+
+
+def process_dataset()->pd.DataFrame:
+    """This is the driver method that will starts the processing process. It will
+    return the clean and ready to use dataset.
+    Args:
+        None
+    Returns:
+        pd.Dataframe - the clean dataframe
+    """
+    clean_dataset = read_dataset_in_dataframe()
+    clean_dataset = drop_unnecessary_cols(clean_dataset)
+    clean_dataset = rename_columns(clean_dataset)
+    clean_dataset = replace_non_numerical_values(clean_dataset)
+    clean_dataset = replace_traces(clean_dataset)
+    clean_dataset = replace_nd_values(clean_dataset)
+    
+    print('Done. Clean dataset ready.')
+    return clean_dataset
