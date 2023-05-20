@@ -52,7 +52,7 @@ def rename_columns (dataset:pd.DataFrame) -> pd.DataFrame:
         the modified dataframe after renaming the columns.
     """
     df = dataset.copy(deep=True)
-    prefix = 'f_'
+    prefix = ''
     new_cols_mapping = {'ID':'ID', 
                     'Name':'name', 
                     'Category':'category', 
@@ -175,6 +175,7 @@ def process_dataset()->pd.DataFrame:
     clean_dataset = replace_non_numerical_values(clean_dataset)
     clean_dataset = replace_traces(clean_dataset)
     clean_dataset = replace_nd_values(clean_dataset)
-    
+    clean_dataset = clean_dataset.drop(columns=['ID'])
+    clean_dataset['energy_kcal'] = clean_dataset['energy_kcal'].astype('float64')
     print('Done. Clean dataset ready.')
     return clean_dataset
