@@ -125,6 +125,34 @@ def replace_non_numerical_values(dataset:pd.DataFrame)->pd.DataFrame:
     return df
 
 
+def add_new_category(dataset:pd.DataFrame)->pd.DataFrame:
+    """ 
+    This method will add a new catefory column to the dataset. Thi snew category will be a more generalized version of the existing
+    category column of the dataset. In total, there will be 13 new categories.
+
+    Args:
+        dataset: is the dataset that we are modifying
+    
+    Returns:
+        the modified dataframe with the category_new column
+    """
+    new_categories_dict = { 'dairy':'dairy', 'non-alcoholic beverages':'non_alcoholic_beverages', 'alcoholic beverages':'alcoholic_beverages',
+                            'sweet':'sweets', 'fruit':'fruits', 'herbs':'herbs', 'vegetable':'vegetables',
+                            'cereal':'cereals', 'bread':'bread', 'sauces':'sauce', 'meat':'meat',
+                            'nut':'nuts'}
+    keys = new_categories_dict.keys()
+    n_cols = len(dataset.columns)
+    dataset['category_new'] = np.zeros((dataset.shape[0], 1))
+
+    for i, value in enumerate(dataset['category']):
+        for word in keys:
+            if word in value.lower():
+                dataset.iloc[i, n_cols] = new_categories_dict[word]
+                break
+            else:
+                dataset.iloc[i, n_cols] = 'other'
+    return dataset
+
 def replace_traces(dataset:pd.DataFrame)->pd.DataFrame:
     """
     This method is used to remove all 'tr.' values, that stand for traces from the datase. We substitute them 
@@ -176,6 +204,7 @@ def process_dataset()->pd.DataFrame:
     clean_dataset = replace_traces(clean_dataset)
     clean_dataset = replace_nd_values(clean_dataset)
     clean_dataset = clean_dataset.drop(columns=['ID'])
+    clean_dataset = add_new_category(clean_dataset)
     clean_dataset['energy_kcal'] = clean_dataset['energy_kcal'].astype('float64')
     print('Done. Clean dataset ready.')
     return clean_dataset
