@@ -32,3 +32,17 @@ Three tutorial sections are planned (each written in a Jupyter notebooks). Each 
 
 ## Datasets
 Choosing 2-3 datasets from a dataset list, we want to display the above [tutorial sections](#tutorial-sections) using these food science datasets as examples. Criteria for selecting datasets are: easily downloadable, some interesting insight can be gained in dataset by using the methods introduced in these tutorials.
+
+
+## Setting up the environment
+In order to be able to set up the environment you first need to have conda installed in your system. Assuming conda is installed run the following steps:
+1. Go inside ML4Food folder where the `environment.yml` file is located.
+2. There run `conda env create -f environment.yml`.
+3. After it has finished running, execute `conda activate ml4food`. This will activate the environment.
+
+To run the notebooks, in the IDE of your choice choose *ml4food* as your Python kernel.
+
+## Future considerations:
+ - Automatic graded excercises.
+ - Check applications of ML in Food Science from Overview chapter.
+ - Complete datsets section in Overview chapter.

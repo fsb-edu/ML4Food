@@ -1,0 +1,18 @@
+**Supervised Learning** - in this setting we aim to build a model that will learn the data the best and will be able to predict future values. 
+It is the same as building a mathematical equation or formula with many input variables in order to be able to derive the desired output variable. 
+The data points that the model uses to learn, already have the corresponding outputs. This is how the model is able to derive a connection between 
+inputs and outputs. There are two types of problems in the supervised setting: *regression* and *classification*. In **regression**, the output that 
+the model learns and then tries to predict is a continuous value (e.g learning age, height of people, etc). In **classification**, the output that 
+the model learns and then tries to predict is a categorical value (e.g a class from a finite number of classes like the whether a tumor cell is benign or malignant). 
+In the case of regression, after the model learns from the data, when we use it, it will output a value similar to what it saw during the training phase. In the 
+case of classification, after the model learns from the data and is ready to be used, when we give it a new, unseen sample it will output a class or a category 
+from the set of categories that it saw during the training phase. [Figure 2](#sup_lear_reg_clf) illustrates the process.
+
+**Unsupervised Learning** - in this setting, the data that we have does not have any values or categories that we can learn and later predict. Here, the models 
+will try to find a structure in the data, or learn patterns present. Some use cases of such models would be: clustering, dimensionality reduction, data generation, 
+anomaly detection etc. In the case of clustering, we try to find groups within the data, so that we can group similar samples together. In the case of dimensionality 
+reduction, we move from data with many features, to compressed data, with very few features. While as the name suggests, in the case of data generation, we use the 
+unlabelled data to learn a structure or underlying properties and based on this, the model will be generate similar samples. For anomaly detection, we can use machine 
+learning models to find outliers in the data. Outliers are points that do not resemble the majority of the points in the dataset. [Fig 3](#unsup_lear) illustrates the 
+idea. Still there is an output from the models and it outputs what the model has learned from the data. In the case of clustering, it will output a cluster number that 
+will show with which other samples a specific sample is most similar to. In the case of dimensionality reduction, the output will be the sample but with less features. 
