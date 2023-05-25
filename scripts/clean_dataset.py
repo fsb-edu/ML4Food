@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-PATH_TO_DATASET = '../data/Swiss_food_composition_database.xlsx'
+PATH_TO_DATASET = '../data/Swiss_food_composition_database_raw.xlsx'
 
 def read_dataset_in_dataframe()->pd.DataFrame:
     """Reading the dataset into a pandas dataframe.
