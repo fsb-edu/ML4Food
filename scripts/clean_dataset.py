@@ -151,6 +151,8 @@ def add_new_category(dataset:pd.DataFrame)->pd.DataFrame:
                 break
             else:
                 dataset.iloc[i, n_cols] = 'other'
+    dataset['category'] = dataset['category_new'] # replace the old category with the refined one
+    dataset = dataset.drop(columns=['category_new']) # drop the new column category
     return dataset
 
 def replace_traces(dataset:pd.DataFrame)->pd.DataFrame:
