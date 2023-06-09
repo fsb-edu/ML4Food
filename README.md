@@ -43,6 +43,6 @@ In order to be able to set up the environment you first need to have conda insta
 To run the notebooks, in the IDE of your choice choose *ml4food* as your Python kernel.
 
 ## Future considerations:
- - Automatic graded excercises.
+ - Automatic graded exercises.
  - Check applications of ML in Food Science from Overview chapter.
- - Complete datsets section in Overview chapter.
+ - Complete datasets section in Overview chapter.
