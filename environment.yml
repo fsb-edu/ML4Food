@@ -1,5 +1,9 @@
 name: ml4food
+channels:
+  - anaconda
+  - defaults
 dependencies:
+ - jupyter
  - matplotlib==3.7.1
  - numpy==1.23.5
  - pandas==1.5.2

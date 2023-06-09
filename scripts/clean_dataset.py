@@ -116,7 +116,7 @@ def replace_non_numerical_values(dataset:pd.DataFrame)->pd.DataFrame:
     """
     df = dataset.copy(deep=True)
     count = df.astype(str).applymap(lambda x: x.count("<")).sum().sum()
-    print("There are " + str(count) + " cells containing non-numerical values. Stripping "<".")
+    print(f"There are {count} cells containing non-numerical values. Stripping "<".")
     print("Done.")
     def extract_value(value):
         if "<" in str(value):
