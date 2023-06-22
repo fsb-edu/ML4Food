@@ -5,7 +5,7 @@ def read_dataset_in_dataframe(path2data)->pd.DataFrame:
     """Reading the dataset into a pandas dataframe.
     
         Args:
-            None
+            The path where the raw dataset is saved.
         Returns:
             The dataframe holding the dataset.
     """
@@ -106,7 +106,7 @@ def rename_columns (dataset:pd.DataFrame) -> pd.DataFrame:
 def replace_non_numerical_values(dataset:pd.DataFrame)->pd.DataFrame:
     """
     This method is used to clear values of the form "<0.4" from the dataset.
-    In this case we subsitute them with the numerical value. E.g: "<0.4" becomes "0.4".
+    In this case we substitute them with the numerical value. E.g: "<0.4" becomes "0.4".
 
     Args:
         dataset: is the dataset we are modifying
@@ -116,15 +116,15 @@ def replace_non_numerical_values(dataset:pd.DataFrame)->pd.DataFrame:
     """
     df = dataset.copy(deep=True)
     count = df.astype(str).applymap(lambda x: x.count("<")).sum().sum()
-    print(f"There are {count} cells containing non-numerical values. Stripping "<".")
-    print("Done.")
+    print(f"There are {count} cells containing non-numerical values. Stripping '<'.", end=' ')
     def extract_value(value):
         if "<" in str(value):
             return float(value.split("<")[1])
         else:
             return value
-    # remove < only from numerical columns, starting from index 3
+    # remove '<' only from numerical columns, starting from index 3
     df.iloc[:, 3:] = df.iloc[:, 3:].applymap(extract_value)
+    print("Done.")
     return df
 
 
@@ -209,7 +209,7 @@ def process_dataset(path2data)->pd.DataFrame:
     """This is the driver method that will starts the processing process. It will
     return the clean and ready to use dataset.
     Args:
-        None
+        The path where the raw data is saved.
     Returns:
         pd.Dataframe - the clean dataframe
     """
