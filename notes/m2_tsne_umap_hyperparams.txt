@@ -1,0 +1,5 @@
+tSNE - any perplexity above 20 will cluster the points. The results with 20 look better though.
+UMAP - min_dist=0.2 and n_neighbors=30 do a nice separation. 
+
+NOTE: due to the way how categories when assigned when initially preprocessing the dataset
+the 'other' category is spread all over the place in low dimensions.
