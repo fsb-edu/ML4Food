@@ -105,9 +105,9 @@ def map_year_label(year):
         The corresponding string.
     """
     if year >= 2015:
-        return f'>={year}'
+        return f'>=2015'
     else:
-        return f'<{year}'
+        return f'<2015'
 
 def refine_bean_origin(country:str, countries_to_keep:list):
     """
@@ -138,6 +138,7 @@ def one_hot_encode_years_bean_origin(dataset:pd.DataFrame):
     one_hot_encoded_bo = pd.get_dummies(dataset['bean_origin'])
     year_mapping = {'>=2015':1, '<2015':0}
     dataset['year_binary'] = dataset['year_reviewed'].map(year_mapping)
+    print(dataset['year_binary'])
     df = pd.concat([dataset, one_hot_encoded_bo], axis=1)
     return df
 
