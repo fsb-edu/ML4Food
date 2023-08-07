@@ -28,7 +28,7 @@ def read_dataset_in_dataframe(path2data)->pd.DataFrame:
             The dataframe holding the dataset.
     """
     dataset = pd.read_csv(path2data)
-    columns_to_keep = ['id', 'bean_origin', 'year_reviewed', 'cocoa_percent',\
+    columns_to_keep = ['bean_origin', 'year_reviewed', 'cocoa_percent',\
                         'num_ingredients', 'rating']
     return dataset[columns_to_keep]
 
@@ -175,5 +175,8 @@ def process_dataset(path2data:str):
     dataset_preprocessed = one_hot_encode_years_bean_origin(dataset_preprocessed)
     dataset_preprocessed = dataset_preprocessed.drop(columns=['year_reviewed', 'bean_origin', 'Other'])
     dataset_preprocessed.rename(columns={'Peru':'country_peru', 'Venezuela':'country_venezuela'}, inplace=True)
+
+    dataset_preprocessed['id'] = range(1, len(dataset_preprocessed)+1)
+    dataset_preprocessed = dataset_preprocessed.set_index('id')
 
     return dataset_preprocessed
