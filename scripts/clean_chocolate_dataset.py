@@ -174,6 +174,6 @@ def process_dataset(path2data:str):
     
     dataset_preprocessed = one_hot_encode_years_bean_origin(dataset_preprocessed)
     dataset_preprocessed = dataset_preprocessed.drop(columns=['year_reviewed', 'bean_origin', 'Other'])
-    dataset_preprocessed.rename(columns={'Peru':'country_Peru', 'Venezuela':'country_Venezuela'}, inplace=True)
+    dataset_preprocessed.rename(columns={'Peru':'country_peru', 'Venezuela':'country_venezuela'}, inplace=True)
 
     return dataset_preprocessed

@@ -52,3 +52,4 @@ To run the notebooks, in the IDE of your choice choose *ml4food* as your Python 
  the models.
  - Find a way to remove/focus categories interactively from the tSNE and UMAP
  plots of Module 3.
+ - Recreation of M2-Figure 5 GIF.

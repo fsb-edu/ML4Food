@@ -1,4 +1,4 @@
-id,cocoa_percent,num_ingredients,rating,split,year_binary,country_Peru,country_Venezuela
+id,cocoa_percent,num_ingredients,rating,split,year_binary,country_peru,country_venezuela
 2454,0.771567826310209,-0.04148005545553843,3.25,train,1,0,0
 2458,0.771567826310209,-0.04148005545553843,3.5,test,1,0,0
 2454,0.771567826310209,-0.04148005545553843,3.75,train,1,0,0
