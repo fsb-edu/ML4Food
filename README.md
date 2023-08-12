@@ -45,11 +45,8 @@ To run the notebooks, in the IDE of your choice choose *ml4food* as your Python 
 ## Future considerations:
  - Automatic graded exercises.
  - Check applications of ML in Food Science from Overview chapter.
- - Complete datasets section in Overview chapter.
  - Clustering for the Swiss Food Composition Dataset.
  - Example where dimensionality reduction and supervised learning
  are used as part of the same pipeline. This will help in visualizing
  the models.
- - Find a way to remove/focus categories interactively from the tSNE and UMAP
- plots of Module 3.
  - Recreation of M2-Figure 5 GIF.
