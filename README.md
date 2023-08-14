@@ -50,3 +50,4 @@ To run the notebooks, in the IDE of your choice choose *ml4food* as your Python 
  are used as part of the same pipeline. This will help in visualizing
  the models.
  - Recreation of M2-Figure 5 GIF.
+ - Selection of multiple categories in the unsupervised plots.
