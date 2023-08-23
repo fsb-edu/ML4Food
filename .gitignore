@@ -129,4 +129,3 @@ dmypy.json
 .pyre/
 *.json
 environment_2.yml
-/images/plots/*
