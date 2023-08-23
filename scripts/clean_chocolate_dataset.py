@@ -1,4 +1,3 @@
-import os
 import numpy as np
 import pandas as pd
 from sklearn.discriminant_analysis import StandardScaler
@@ -76,7 +75,8 @@ def impute_missing_values(train_set:pd.DataFrame, test_set:pd.DataFrame):
     return train_set, test_set
 
 
-def standardize_the_dataset(train_data:pd.DataFrame, test_data:pd.DataFrame, feature_cols:list):
+def standardize_the_dataset(train_data:pd.DataFrame, test_data:pd.DataFrame,
+                            feature_cols:list):
     """
     This  function performs the standardization of the dataset.
 
@@ -105,9 +105,9 @@ def map_year_label(year):
         The corresponding string.
     """
     if year >= 2015:
-        return f'>=2015'
+        return '>=2015'
     else:
-        return f'<2015'
+        return '<2015'
 
 def refine_bean_origin(country:str, countries_to_keep:list):
     """
@@ -173,8 +173,10 @@ def process_dataset(path2data:str):
         .apply(refine_bean_origin, args=(countries_to_keep, ))
     
     dataset_preprocessed = one_hot_encode_years_bean_origin(dataset_preprocessed)
-    dataset_preprocessed = dataset_preprocessed.drop(columns=['year_reviewed', 'bean_origin', 'Other'])
-    dataset_preprocessed.rename(columns={'Peru':'country_peru', 'Venezuela':'country_venezuela'}, inplace=True)
+    dataset_preprocessed = dataset_preprocessed.drop(
+        columns=['year_reviewed', 'bean_origin', 'Other'])
+    dataset_preprocessed.rename(
+        columns={'Peru':'country_peru', 'Venezuela':'country_venezuela'}, inplace=True)
 
     dataset_preprocessed['id'] = range(1, len(dataset_preprocessed)+1)
     dataset_preprocessed = dataset_preprocessed.set_index('id')
