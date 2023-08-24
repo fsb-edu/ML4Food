@@ -1,53 +1,35 @@
 # ML4Food
-Develop tutorials that expose Food Science BSc students at ETH to practical applications of machine learning in food sciences. Students will learn to apply ML methods for data exploration and analysis using datasets related to food science.
+Tutorials exposing Food Science BSc students at ETH to practical applications of Machine Learning (ML) in Food Sciences.
 
-## Tutorial sections
-Three tutorial sections are planned (each written in a Jupyter notebooks). Each tutorial should include an interactive teaching section and a short exercise.
+## Set up
+To run all 3 modules and the mini-project, we recommend you set up the following conda environment:
+````
+conda env create -f environment.yml
+conda activate ml4food
+````
 
-### 1) Overview of ML for food sciences
-* Brief textual overview on where ML is used in food sciences
-* Brief overview of unsupervised vs. supervised learning
-* Introduction to 2-3 datasets that will be used throughout the tutorials (see [datasets section](#datasets))
-* Overview and application of basic data processing methods for ML methods (simple code excerpts using scikit-learn and pandas) including:
-    * train-test split
-    * standardization
-    * outlier detection
-    * data quality control
+## Overview of tutorials
+The tutorials and the mini-project aim to teach students how to apply ML methods for data exploration and analysis using datasets related to food science. They all contain theory as well as practical examples and exercises. 
 
-### 2) Unsupervised clustering
-* Brief overview of unsupervised learning and its main applications (clustering, dimensionality reduction)
-* Display of interactive plots of different clustering methods in which students can play with different parameters and observe the behavior of the resulting clustering, e.g.:
-    * PCA
-    * k-means (inspiration [here](https://k-means-explorable.vercel.app/))
-    * UMAP (inspiration [here](https://pair-code.github.io/understanding-umap/))
-    * t-SNE
+The 3 tutorials each cover the following topics:
+- `M1_MLIntro_DataProcessing` introduces what ML is, describes datasets used throughout all tutorials and introduces basic data processing methods for ML. 
+- `M2_MLSupervisedLearning` explains what supervised ML is and introduces common models used for classification and regression.
+- `M3_MLUnsupervisedLearning` introduces unsupervised ML and describes different dimensionality reduction techniques. 
 
+We recommend working through the tutorials in the described order. 
 
-### 3) Supervised learning: classification and regression
-* Introduction of training setup, e.g. role of train-test set, notion of reduction of loss metric
-* Brief overview of some common models for classification and regression
-* Introduction of role of evaluation metrics and overview of a few commonly used metrics
-* Introduction of role of hyperparameters & display of interactive plots where students can play with hyperparameters of a model and observe the changing decision boundaries and evaluation metrics of the resulting models
+After having completed all 3 tutorials students can move on to doing the mini-project in `Mini_Project.ipynb`. The mini-project encompasses all important concepts learned throughout the tutorials and motivates students to apply the learned material on a simple exemplary use case. 
 
+## Solutions
+The solutions to the checkpoint exercises in all 3 tutorials are available in `notes/Master_Solution_Checkpoints.ipynb`. The solution of the mini-project is in `notes/Mini_Project_Solutions.ipynb`.
 
 ## Datasets
-Choosing 2-3 datasets from a dataset list, we want to display the above [tutorial sections](#tutorial-sections) using these food science datasets as examples. Criteria for selecting datasets are: easily downloadable, some interesting insight can be gained in dataset by using the methods introduced in these tutorials.
+Throughout all tutorials and the mini-project, two datasets are used, namely:
+* a processed version of the [Swiss Food composition database](https://naehrwertdaten.ch/en/) containing information on the composition of different foods,
+* a processed version of the [Chocolate Bar Ratings](https://www.kaggle.com/datasets/evangower/chocolate-bar-ratings) dataset containing chocolate bar ratings from all over the world. 
 
+More information on the processing and the datasets can be found at the start of  `M1_MLIntro_DataProcessing.ipynb`.
 
-## Setting up the environment
-In order to be able to set up the environment you first need to have conda installed in your system. Assuming conda is installed run the following steps:
-1. Go inside ML4Food folder where the `environment.yml` file is located.
-2. There run `conda env create -f environment.yml`.
-3. After it has finished running, execute `conda activate ml4food`. This will activate the environment.
+## Acknowledgments
+This project was funded by the ETH Rector’s Impulse Fund.
 
-To run the notebooks, in the IDE of your choice choose *ml4food* as your Python kernel.
-
-## Future considerations:
- - Automatic graded exercises.
- - Check applications of ML in Food Science from Overview chapter.
- - Clustering for the Swiss Food Composition Dataset.
- - Example where dimensionality reduction and supervised learning
- are used as part of the same pipeline. This will help in visualizing
- the models.
- - Recreation of M2-Figure 5 GIF.
- - Selection of multiple categories in the unsupervised plots.
