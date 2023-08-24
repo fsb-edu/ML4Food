@@ -1,5 +1,6 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 
 def read_dataset_in_dataframe(path2data)->pd.DataFrame:
     """Reading the dataset into a pandas dataframe.
