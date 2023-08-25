@@ -30,6 +30,9 @@ Throughout all tutorials and the mini-project, two datasets are used, namely:
 
 More information on the processing and the datasets can be found at the start of  `M1_MLIntro_DataProcessing.ipynb`.
 
+## Images
+All images of the tutorials can be found in the `images` folder. To change or  modify any of them, see `Graphics Of ML4Food.pptx`.
+
 ## Acknowledgments
 This project was funded by the ETH Rector’s Impulse Fund.
 
