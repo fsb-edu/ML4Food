@@ -1,9 +1,0 @@
-Like in many other areas, machine learning is quite useful even when it comes to Food Science. There are different applications in diverse areas that include: quality control, sensory analysis, food safety, product development, etc. 
-In the case of quality control, machine learning models can help people  to identify flaws in the food production process that may be related to contamination or other defects. When it comes to sensory analysis, machine learning models can use past data to understand consumer preferences and give suggestions on new products that can be developed. Machine learning can be useful in case of food safety as well since they can be used to analyze data from microbiological test results to predict possible contamination scenarios. Lastly, it can help taylor the product development to not only make it efficient, but to also find trends and customer preferences in order to maximize profits.
-All in all, everyday and more, machine learning is playing an increasing role in food science. 
-
-Resources:
-1. https://www.analyticssteps.com/blogs/10-applications-ai-food-industry
-2. https://spd.group/machine-learning/machine-learning-and-ai-in-food-industry/
-3. https://dt4o.com/the-potential-role-of-artificial-intelligence-and-machine-learning-in-the-food-industry/
-4. ChatGPT

@@ -21,7 +21,7 @@ We recommend working through the tutorials in the described order.
 After having completed all 3 tutorials students can move on to doing the mini-project in `Mini_Project.ipynb`. The mini-project encompasses all important concepts learned throughout the tutorials and motivates students to apply the learned material on a simple exemplary use case. 
 
 ## Solutions
-The solutions to the checkpoint exercises in all 3 tutorials are available in `notes/Master_Solution_Checkpoints.ipynb`. The solution of the mini-project is in `notes/Mini_Project_Solutions.ipynb`.
+The solutions to the checkpoint exercises in all 3 tutorials are available in `solutions/Master_Solution_Checkpoints.ipynb`. The solution of the mini-project is in `solutions/Mini_Project_Solutions.ipynb`.
 
 ## Datasets
 Throughout all tutorials and the mini-project, two datasets are used, namely:
