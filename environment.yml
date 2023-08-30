@@ -1,5 +1,6 @@
 name: ml4food
 channels:
+  - conda-forge
   - anaconda
   - defaults
 dependencies:
